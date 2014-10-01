@@ -46,3 +46,21 @@ Responsable Commercial
 	Afin de réaliser ce calcul, la matrice f entrée dans linprog est une matrice colone simple permettant la somme des trois premiers membres et la soustraction des trois derniers membres. Autrement dit, trois 1 en tête de la matrice puis trois -1 pour finir. Pour la deuxième équation à réaliser, il suffit de prendre l'opposé de ce même vecteur.
 	Problème pour réaliser cela, la fonction linprog considère que les chiffres négatifs sont plus petits que zéro (normal), et elle ne prend pas en compte les valeurs absolus.
 	Pour y remédier, on recherche la solution correspondant au minimum pour la fonction expliquée ci-dessus puis la solution correspondant au minimum de l'opposé de cette même fonction. On trouve ainsi deux solutions dont on fait ensuite la moyenne pour trouver la solution finale qui correspond.
+	
+
+Responsable d'atelier
+
+	Cette personne veut fabriquer le plus de produits possible. La fonction à maximiser est donc celle donnant la "somme des produits fabriqués".
+	
+	Mise en oeuvre --------------------
+	Ceci revient à minimiser la fonction f opposée représentée par le vecteur [-1 ;  -1 ; -1 ; -1 ; -1 ; -1].
+	
+	Résultats -------------------------
+	Le résultat rendu par l'optimisation par calcul est le vecteur colonne : [0.0000, 56.7320, 38.6928, 0.0000, 184.4608, 98.9216]
+	Pour produire beaucoup, il s'agit donc de mettre de coté la fabrication des produits A et D et de répartir la production des 4 autres selon le plan suivant :
+	B = 56.73203,
+	C = 38.69281,
+	E = 184.46078,
+	F = 98.92157.
+
+	Ce plan permet de produire au total 378.81 produits par semaine.
