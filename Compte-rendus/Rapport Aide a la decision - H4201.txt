@@ -64,3 +64,13 @@ Responsable d'atelier
 	F = 98.92157.
 
 	Ce plan permet de produire au total 378.81 produits par semaine.
+	
+Responsable des stocks
+	
+	Notre but est d'avoir le moins de produits dans notre stocks, tout en étant en activité.
+	
+	Démarche ----------------
+	Pour obtenir ce résultat, il faut que l'on minimise la fonction qui détermine la quantité de matières premières nécessaires à la production d'un produit.
+	
+	Mise en oeuvre ----------------
+	Pour calculer le stock, on utilise la table des quantités de matières premières par produit. On somme les valeurs des colonnes afin de déterminer la quantité de matières premières nécessaires à la production d'un produit, toutes matières premières confondues. On obtient un vecteur de taille [6,1]. On lui ajoute un vecteur de 1 de taille [6,1] qui modélise le produit créé pour l'uitilisation de ces matières premières.
