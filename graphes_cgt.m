@@ -1,4 +1,4 @@
-function graphes_cgt( )
+function [X_3, f_cgt_3,f_cgt_5 f_cgt_35] = graphes_cgt( )
 %GRAPHES_CGT Summary of this function goes here
 %   Detailed explanation goes here
     matrix();
@@ -35,7 +35,18 @@ function graphes_cgt( )
         cgt_res_5(i + 1) = f_cgt_5' * best_x_cgt_5;
         cgt_res_35(i + 1) = f_cgt_35' * best_x_cgt_35;
     end
+    
     plot(0:0.01:1, cgt_res_3, 'g-', 0:0.01:1, cgt_res_5, 'r-', 0:0.01:1, cgt_res_35);
+    
+    ConstraintsB(11) = -ben_max * 0.70;
+    best_x_cgt_3 = linprog(f_cgt_3, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
+    best_x_cgt_35 = linprog(f_cgt_35, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
+    best_x_cgt_5 = linprog(f_cgt_5, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
+    
+    X_5 = best_x_cgt_5
+    X_3 = best_x_cgt_3
+    X_35 = best_x_cgt_35
+    
 end
 
 
