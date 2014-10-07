@@ -1,12 +1,12 @@
 function [ best_x, f_ben ] = benefice()
-%BENFICE Calcule le bénéfice maximal avec les contraintes de bases
-%   Renvoie la meilleure combinaison de produits (best_x) et la méthode de
-%   calcul du bénéfice (f_ben). Donc le bénéfice maximal est f_ben * best_x
+%BENFICE Calcule le bï¿½nï¿½fice maximal avec les contraintes de bases
+%   Renvoie la meilleure combinaison de produits (best_x) et la mï¿½thode de
+%   calcul du bï¿½nï¿½fice (f_ben). Donc le bï¿½nï¿½fice maximal est f_ben * best_x
 
-    matrix();
+    [ConstraintsA, ConstraintsB, T1, T2, T3, T41, T42, T5] = matrix();
     T1T = T1';
     f_ben = T41 - (T42 * T2 + T5 * T1T);
 
     % Minimiser -f_ben <=> maximiser f_ben
-    best_x = linprog(-f_ben,ConstraintsA,ConstraintsB,[],[],zeros(6,1));
+    best_x = linprog(-f_ben',ConstraintsA,ConstraintsB,[],[],zeros(6,1), []);
 end
