@@ -5,14 +5,15 @@ function graphes_commercial ()
 
     ConstraintsA(11, :) = -f_ben;
 
+    f_difference = [1 1 1 -1 -1 -1]';
+    f_famille_1 = [1 1 1 0 0 0];
+    f_famille_2 = [0 0 0 1 1 1];
+
     famille_1 = zeros(101, 1);
     famille_2 = zeros(101, 1);
+
     for i = 0:100
         pourcentage = i / 100;
-
-        f_difference = [1 1 1 -1 -1 -1]';
-        f_famille_1 = [1 1 1 0 0 0];
-        f_famille_2 = [0 0 0 1 1 1];
 
         ConstraintsB(11) = -ben_max * pourcentage;
         best_x_commercial = linprog(f_difference, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
@@ -21,6 +22,6 @@ function graphes_commercial ()
         famille_1(i + 1) = f_famille_1 * best_x_commercial;
         famille_2(i + 1) = f_famille_2 * best_x_commercial;
     end
-    
-    plot(0:0.01:1, famille_1, '-', 0:0.01:1, famille_2, 'ro');
+
+    plot(0:0.01:1, famille_1, '-', 0:0.01:1, famille_2, 'r-');
 end
