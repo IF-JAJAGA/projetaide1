@@ -21,9 +21,13 @@ function [X_3, f_cgt_3,f_cgt_5 f_cgt_35] = graphes_cgt( )
         Tpsl_5 = sum(T1l_5,2);
         Tpsl_35 = sum(T1l_35,2);
 
-        f_cgt_3 = (Tpsl_3 ./ Tps);
-        f_cgt_5 = (Tpsl_5 ./ Tps);
-        f_cgt_35 = (Tpsl_35 ./ Tps);
+%         f_cgt_3 = (Tpsl_3 ./ Tps);
+%         f_cgt_5 = (Tpsl_5 ./ Tps);
+%         f_cgt_35 = (Tpsl_35 ./ Tps);
+        
+        f_cgt_3 = Tpsl_3;
+        f_cgt_5 = Tpsl_5;
+        f_cgt_35 = Tpsl_35;
 
         ConstraintsB(11) = -ben_max * pourcentage;
         best_x_cgt_3 = linprog(f_cgt_3, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
@@ -38,7 +42,7 @@ function [X_3, f_cgt_3,f_cgt_5 f_cgt_35] = graphes_cgt( )
     
     plot(0:0.01:1, cgt_res_3, 'g-', 0:0.01:1, cgt_res_5, 'r-', 0:0.01:1, cgt_res_35);
     
-    ConstraintsB(11) = -ben_max * 0.70;
+    ConstraintsB(11) = -ben_max * 0.80;
     best_x_cgt_3 = linprog(f_cgt_3, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
     best_x_cgt_35 = linprog(f_cgt_35, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
     best_x_cgt_5 = linprog(f_cgt_5, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
