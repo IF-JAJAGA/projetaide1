@@ -16,10 +16,11 @@ function [ best_x_commercial, f_difference ] = commercial( )
     %équivalentes. Cette valeur est obtenue par l'étude du graphe de 
     %l'évolution des quantités des deux produits en fonction du pourcentage
     %du bénéfice max (via la fonction graphes_commercial().
-    p_max = 0.7268
+    p_max = 0.7268;
+    p_autre = p_max;
     
     ConstraintsA(11, :) = -f_ben;
-    ConstraintsB(11) = -ben_max * p_max;
+    ConstraintsB(11) = -ben_max * p_autre;
     
     ConstraintsA(12, :) = -f_difference;
     ConstraintsB(12) = 0;

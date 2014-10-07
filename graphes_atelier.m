@@ -4,7 +4,7 @@ function[meilleur,f_atelier ] = graphes_atelier()
 %   Exemple d'utilisation (cf fichier matrix.m) : 
 %  x = atelierJerome(fonctionChefAtelier, ConstraintsA, ConstraintsB, [], [], zeros(6,1), [])
 
-	[ConstraintsA, ConstraintsB, T1, T2, T3, T41, T42, T5] = matrix();    
+	matrix();    
 	%matrix();
 	[best_x_ben, f_ben] = benefice();
 	ben_max = f_ben * best_x_ben;
@@ -21,7 +21,7 @@ function[meilleur,f_atelier ] = graphes_atelier()
 	    	
 	    	ConstraintsB(11) = -ben_max * pourcentage;
 	
-		best_x_atelier = linprog(f_atelier, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
+		best_x_atelier = linprog(-f_atelier, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
 		
 		% L'indexation commence � 1, donc de 1 � 101 au lieu de 0 � 100
 		nbProduits(i + 1) = f_atelier' * best_x_atelier;
