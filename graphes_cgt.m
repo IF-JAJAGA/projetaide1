@@ -1,6 +1,7 @@
 function [X_3, f_cgt_3,f_cgt_5 f_cgt_35] = graphes_cgt( )
 %GRAPHES_CGT Summary of this function goes here
 %   Detailed explanation goes here
+    %[ConstraintsA, ConstraintsB, T1, T2, T3, T41, T42, T5] = matrix();
     matrix();
     [best_x_ben, f_ben] = benefice();
     ben_max = f_ben * best_x_ben;
@@ -30,10 +31,10 @@ function [X_3, f_cgt_3,f_cgt_5 f_cgt_35] = graphes_cgt( )
         f_cgt_35 = Tpsl_35;
 
         ConstraintsB(11) = -ben_max * pourcentage;
-        best_x_cgt_3 = linprog(f_cgt_3, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
-        best_x_cgt_5 = linprog(f_cgt_5, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
-        best_x_cgt_35 = linprog(f_cgt_35, ConstraintsA, ConstraintsB, [], [], zeros(6, 1));
-        % L'indexation commence à 1, donc de 1 à 101 au lieu de 0 à 100
+        best_x_cgt_3 = linprog(f_cgt_3, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
+        best_x_cgt_5 = linprog(f_cgt_5, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
+        best_x_cgt_35 = linprog(f_cgt_35, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
+        % L'indexation commence ï¿½ 1, donc de 1 ï¿½ 101 au lieu de 0 ï¿½ 100
         
         cgt_res_3(i + 1) = f_cgt_3' * best_x_cgt_3;
         cgt_res_5(i + 1) = f_cgt_5' * best_x_cgt_5;
