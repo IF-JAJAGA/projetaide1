@@ -18,7 +18,7 @@ function graphes_commercial ()
     difference = zeros(101, 1);
 
     for i = 0:100
-        pourcentage = (7250 + i) / 10000;
+        pourcentage = i / 100;
 
         ConstraintsB(11) = -ben_max * pourcentage;
         best_x_commercial = linprog(f_difference, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
@@ -30,6 +30,6 @@ function graphes_commercial ()
 	
     difference = famille_2 - famille_1;
     
-    plot(0.725:0.0001:0.735, famille_1, '-', 0.725:0.0001:0.735, famille_2, 'r-', 0.725:0.0001:0.735, difference, 'g--');
+    plot(0:0.01:1, famille_1, '-', 0:0.01:1, famille_2, 'r-', 0:0.01:1, difference, 'g--');
 
 end
