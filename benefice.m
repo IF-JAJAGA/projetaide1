@@ -3,7 +3,7 @@ function [ best_x, f_ben ] = benefice()
 %   Renvoie la meilleure combinaison de produits (best_x) et la m�thode de
 %   calcul du b�n�fice (f_ben). Donc le b�n�fice maximal est f_ben * best_x
 
-    [ConstraintsA, ConstraintsB, T1, T2, T3, T41, T42, T5] = matrix();
+    matrix();
     T1T = T1';
     f_ben = T41 - (T42 * T2 + T5 * T1T);
 

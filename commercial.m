@@ -1,13 +1,19 @@
-function [ eq ] = commercial( A, b, z )
+function [ best_x_commercial ] = commercial( )
 %COMMERCIAL Summary of this function goes here
-%   Detailed explanation goes here
 
-f1 = [1 1 1 -1 -1 -1]';
-f2 = [-1 -1 -1 1 1 1]';
+    matrix();
+    [best_x_ben, f_ben] = benefice();
+    ben_max = f_ben * best_x_ben;
 
-x1 = linprog ( f1, A, b, [], [], z );
-x2 = linprog ( f2, A, b, [], [], z );
+    f_difference = [-1 -1 -1 1 1 1]';
 
-eq = 1/2 * (x1 + x2);
+    ConstraintsA(12, :) = -f_difference;
+    ConstraintsB(12) = 0;
+    
+    ConstraintsA(11, :) = -f_ben;
+    ConstraintsB(11) = -ben_max * 0.7268;
+    
+    best_x_commercial = linprog(f_difference, ConstraintsA, ConstraintsB, [], [], zeros(6, 1), []);
+	
 end
 
