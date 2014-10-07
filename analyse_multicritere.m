@@ -1,4 +1,7 @@
 function analyse_multicritere( )
+%{
+	Calcul les matrice des concordance et discordance C et D pour la table des jugements J.
+%}
 	J = [6 5 5 5;
 	5 4 9 3;
 	3 4 7 3;
