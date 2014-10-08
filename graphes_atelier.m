@@ -4,7 +4,7 @@ function[meilleur,f_atelier ] = graphes_atelier()
 %   Exemple d'utilisation (cf fichier matrix.m) : 
 %  x = atelierJerome(fonctionChefAtelier, ConstraintsA, ConstraintsB, [], [], zeros(6,1), [])
 
-	matrix();    
+	[ConstraintsA, ConstraintsB, T1, T2, T3, T41, T42, T5] = matrix();    
 	%matrix();
 	[best_x_ben, f_ben] = benefice();
 	ben_max = f_ben * best_x_ben;
@@ -16,6 +16,7 @@ function[meilleur,f_atelier ] = graphes_atelier()
 	
 	meilleur = zeros(6,1);
 	maxi = 0;
+	pourcentageMax = 0;
 	for i = 0:100
 	 	pourcentage = i / 100;
 	    	
@@ -26,9 +27,15 @@ function[meilleur,f_atelier ] = graphes_atelier()
 		% L'indexation commence � 1, donc de 1 � 101 au lieu de 0 � 100
 		nbProduits(i + 1) = f_atelier' * best_x_atelier;
 		
-		if(nbProduits(i+1)>maxi)
-			maxi = nbProduits(i+1);
-			meilleur = best_x_atelier;
+		if(nbProduits(i+1)>=maxi-0.5)	
+		%rôle du "-0.5" : Permettre une marge d'erreur pour arriver au bénéfice maximal en ayant un nombre entier de produits fabriqués identique au vrai maximum.
+			i
+			if(nbProduits(i+1)>maxi)
+			%Optimisation (ne mange pas de pain ...)
+				maxi = nbProduits(i+1);
+				meilleur = best_x_atelier;
+			end
+			pourcentageMax = i;
 		end
 	end
 	plot(0:0.01:1, nbProduits);
@@ -36,5 +43,6 @@ function[meilleur,f_atelier ] = graphes_atelier()
 	SommeProduits = max(nbProduits);
 	maxi
 	meilleur
+	pourcentageMax
 end
 
